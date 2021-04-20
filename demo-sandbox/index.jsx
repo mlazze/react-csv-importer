@@ -18,6 +18,9 @@ ReactDOM.render(
       chunkSize={10000} // optional, internal parsing chunk size in bytes
       assumeNoHeaders={false} // optional, keeps "data has headers" checkbox off by default
       restartable={false} // optional, lets user choose to upload another file when import is complete
+      onUpload={({ file }) => {
+          // optional, invoked when file is uploaded
+      }}
       onStart={({ file, fields }) => {
         // optional, invoked when user has mapped columns and started import
         console.log("starting import of file", file, "with fields", fields);

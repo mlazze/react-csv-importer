@@ -41,6 +41,7 @@ export interface ImporterProps<Row extends BaseRow>
   restartable?: boolean;
   processChunk: ParseCallback<Row>;
   onStart?: (info: ImportInfo) => void;
+  onUpload?: (file: File) => File;
   onComplete?: (info: ImportInfo) => void;
   onClose?: (info: ImportInfo) => void;
   children?: ImporterContentRenderProp | React.ReactNode;

@@ -3,7 +3,8 @@ import React, {
   useState,
   useCallback,
   useEffect,
-  useContext
+  useContext,
+  useRef
 } from 'react';
 
 import { FieldAssignmentMap, BaseRow } from './parser';
@@ -114,6 +115,7 @@ export function Importer<Row extends BaseRow>({
   restartable,
   processChunk,
   onStart,
+  onUpload,
   onComplete,
   onClose,
   children: content,
@@ -133,6 +135,9 @@ export function Importer<Row extends BaseRow>({
   ] = useState<FieldAssignmentMap | null>(null);
 
   const fileHandler = useCallback((file: File) => {
+    if (onUpload) {
+      file = onUpload(file);
+    }
     setSelectedFile(file);
   }, []);
 
